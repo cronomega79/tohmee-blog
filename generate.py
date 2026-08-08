@@ -218,6 +218,17 @@ POSTS = [
 
 assert len(POSTS) == 20, len(POSTS)
 
+GA_ID = "G-J1R9FDDNLP"
+GA_SNIPPET = """<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=GA_ID_PLACEHOLDER"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'GA_ID_PLACEHOLDER');
+</script>
+""".replace("GA_ID_PLACEHOLDER", GA_ID)
+
 NAV = f"""<nav class="site-nav">
   <a href="{SITE}/" class="brand">TōhMee Blog</a>
   <a href="{STORE}/" target="_blank" rel="noopener">Shop TōhMee &rarr;</a>
@@ -230,6 +241,7 @@ FOOTER = f"""<footer class="site-footer">
 POST_TEMPLATE = """<!doctype html>
 <html lang="en">
 <head>
+{ga}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title} | TōhMee Blog</title>
@@ -262,6 +274,7 @@ INDEX_ITEM = """<li>
 INDEX_TEMPLATE = """<!doctype html>
 <html lang="en">
 <head>
+{ga}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>TōhMee Blog — Streetwear Guides & Style Tips</title>
@@ -329,13 +342,13 @@ for p in POSTS:
     html_out = POST_TEMPLATE.format(
         title=html.escape(p["title"]), desc=html.escape(p["desc"]),
         canonical=canonical, nav=NAV, footer=FOOTER, site=SITE, store=STORE,
-        body=body_html, link_href=link_href, link_text=link_text,
+        body=body_html, link_href=link_href, link_text=link_text, ga=GA_SNIPPET,
     )
     write(f"posts/{p['slug']}/index.html", html_out)
     index_items.append(INDEX_ITEM.format(site=SITE, slug=p["slug"], title=html.escape(p["title"]), desc=html.escape(p["desc"])))
     sitemap_urls.append(canonical)
 
-write("index.html", INDEX_TEMPLATE.format(site=SITE, nav=NAV, footer=FOOTER, items="\n    ".join(index_items)))
+write("index.html", INDEX_TEMPLATE.format(site=SITE, nav=NAV, footer=FOOTER, items="\n    ".join(index_items), ga=GA_SNIPPET))
 
 # sitemap.xml
 sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
