@@ -17,6 +17,7 @@ POSTS = [
             "Graphic-wise, lean into designs with a story or a reference rather than generic logos — pop-culture nods, bold typography, and one strong focal image tend to outperform busy, all-over prints as gifts because they read well from a distance and don't go out of style in a season.",
             "On sizing: when in doubt, size up rather than down. Streetwear generally leans oversized, and a tee that's slightly too big reads as intentional, while one that's too small just looks like a mistake. If you know their usual size in fitted brands, add one size for a relaxed streetwear fit.",
             "Ring-spun cotton tees (like the ones we use) hold color and shape through repeat washes better than cheaper carded cotton, so a well-made graphic tee is a gift that still looks good six months later — not just on the day it's unwrapped.",
+            "Ordering from outside the US: we ship internationally, including the UK and EU. Checkout is priced in USD, and your card or PayPal converts it at their standard exchange rate — worth checking whether your country applies import duties or VAT on delivery, since that's handled by customs, not us, and varies by destination.",
         ]),
     dict(slug="how-to-style-a-graphic-tee", title="How to Style a Graphic Tee: 5 Streetwear Outfit Ideas",
         desc="Five practical ways to style a graphic tee for everyday streetwear, from layered fits to clean minimalist pairings.",
